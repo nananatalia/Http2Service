@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error {
+    color: #ef4444;
+}
+
+.info {
+    font-size: large;
+    background-color: white;
+    padding: 20px 130px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info2 {
+    font-size: 1.75rem;
+}
