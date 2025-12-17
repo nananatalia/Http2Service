@@ -1,17 +1,23 @@
+* {
+  margin: 0;    /* ustawiamy margines na 0, żeby usunąc domyślne wartości */
+  padding: 0;   /* ustawiamy padding na 0, żeby usunąc domyślne wartości */
+  box-sizing: border-box; /* ustawiamy box-sizing na border-box, żeby padding i border były wliczane do szerokości i wysokości elementu */
+                          /* dzięki temu łatwiej jest zarządzać rozmiarami elementów  dla łatwiejszych layotów*/
+  scroll-behavior: smooth;  /* płynne przewijanie strony */
+}
+
 body {
-  background-color: rgb(206, 206, 206);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.app {
-  min-height: 100vh;
-  width: 100%;
-}
-
-.main-content {
-  padding-top: 90px;
-  min-height: calc(100vh - 80px);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5; /* ustawiamy wysokość linii na 1.5 dla lepszej czytelności tekstu - odstep między liniami tesktu*/
+  font-weight: 400; /* ustawiamy domyślną grubość czcionki na 400 (normalną) */
+  display: flex;  /* ustawiamy display na flex, żeby łatwiej zarządzać układem strony - kontener flex*/
+  flex-direction: column; /* ustawiamy kierunek flex na kolumnowy, żeby elementy były ułożone pionowo */
+  align-items: center; /* ustawiamy wyrównanie elementów w osi poprzecznej na środek */
+  justify-content: center; /* ustawiamy wyrównanie elementów w osi głównej na środek */
+  min-width: 320px; /* ustawiamy minimalną szerokość strony na 320px dla lepszej responsywności (np iPhone SE)*/
+  min-height: 100vh;  /* ustawiamy minimalną wysokość strony na 100vh, żeby strona zajmowała całą wysokość okna przeglądarki */
+  color: rgba(255, 255, 255, 0.87); /* ustawiamy domyślny kolor tekstu na biały z przezroczystością 87% dla lepszej czytelności na ciemnym tle */
+  background-color: /*rgb(18, 17, 17);*/ #1e1e1e;  /* ustawiamy domyślny kolor tła na ciemny */
+  width: 100%; /* ustawiamy szerokość strony na 100% */
+  height: 100%; /* ustawiamy wysokość strony na 100%, czyli rozciągamy na całą szerokość i wysokośc*/
 }

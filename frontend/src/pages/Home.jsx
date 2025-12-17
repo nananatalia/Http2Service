@@ -1,20 +1,17 @@
-import React from 'react';
-import './Home.css';
+import React from 'react'
+import './Home.css'
 
-function Home ({ user, error }) {
-  return <div>
-    <div className='container'>
-      {error && <p className='error'>{error}</p>}
-      {user ? (
-        <div className='info'>
-          <h1>Witaj, {user.name}!</h1>
-          <p>Email: {user.email}</p>
-        </div>
-      ) : (
-        <h2 className='info2'>Potrzeba się zalogować bądź zarejestrować do dalszych działań.</h2>
-      )}
+function HomePage() {
+  return (
+    <div className='main-text'>
+        <img src="/assets/sound-bar.svg" alt="logo image" className='logo' />
+        <h1>Analizator Widma</h1>
+        <p>Witaj w naszej internetowej aplikacji.</p>
+        <p>Modyfikuj tak jak chcesz - customizacja kolorów i ustawień pozwala dopasować urządzenie do Twojego stylu!</p>
+
+        <button>Zaczynamy</button>
     </div>
-  </div>
+  )
 }
 
-export default Home;
+export default HomePage
