@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
-import Register from './pages/Register.jsx'
 import axios from 'axios'
 import NotFound from './components/NotFound.jsx'
 
@@ -38,12 +36,10 @@ function App() {
   return (
     <Router>
       <div className='app'> 
-        <Navbar user={user} setUser={setUser}/>
         <main className='main-content'>
           <Routes>
             <Route path='/' element={<Home user={user} error={error} />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} />
-            <Route path='/register' element={user ? <Navigate to="/" /> : <Register setUser={setUser}/>} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
