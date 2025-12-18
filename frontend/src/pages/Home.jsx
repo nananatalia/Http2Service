@@ -1,7 +1,11 @@
 import React from 'react'
 import './Home.css'
+import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
+
+  const navigate = useNavigate();
+
   return (
     <div className='main-text'>
         <img src="src/assets/sound-bar.svg" alt="logo image" className='logo' />
@@ -9,7 +13,7 @@ function HomePage() {
         <p>Witaj w naszej internetowej aplikacji.</p>
         <p>Modyfikuj tak jak chcesz - customizacja kolorów i ustawień pozwala dopasować urządzenie do Twojego stylu!</p>
 
-        <button>Zaczynamy</button>
+        <button onClick={() => navigate("/login")}>Zaczynamy</button>
     </div>
   )
 }
