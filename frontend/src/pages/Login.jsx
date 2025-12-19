@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
 import { set } from 'react-hook-form';
 
 //axios.defaults.withCredentials = true;  // pozwala na wysylanie ciasteczek z kazdym zapytaniem
