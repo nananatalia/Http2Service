@@ -1,0 +1,183 @@
+.container {
+  width: 175vh; /* Możesz zmienić na vw lub px dla lepszej kontroli */
+  height: 90vh;
+  padding: 20px; /* Zmniejszone z 20rem na 20px - 20rem to ogromna wartość */
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.414);
+  background: black;
+  display: flex;
+  overflow: hidden;
+  position: relative; /* Dodane - pozwala na pozycjonowanie sidebar względem container */
+}
+
+.sidebar {
+  position: absolute; /* Zmienione z fixed na absolute */
+  left: 0; /* Umieszczenie przy lewej krawędzi container */
+  top: 0; /* Umieszczenie przy górnej krawędzi container */
+  width: 18rem;
+  height: 100%; /* Zajmie całą wysokość container */
+  border-right: 1px solid whitesmoke;
+  padding: 1rem;
+  box-sizing: border-box; /* Dodane - padding nie będzie wpływał na szerokość */
+}
+
+.prof-img {
+    width: 90px; /* Przykładowa szerokość, dostosuj według potrzeb */
+    height: 90px; /* Przykładowa wysokość, dostosuj według potrzeb */
+    border-radius: 50%; /* Zaokrąglone rogi dla efektu koła */
+    object-fit: cover; /* Zapewnia, że obraz będzie dobrze dopasowany */
+    display: block; /* Usuwa ewentualne odstępy pod obrazem */
+    margin: 0 auto; /* Centrowanie obrazu w sidebar */
+    margin-top: 10px;
+}
+
+.user-info {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+hr {
+    margin-top: 5px;
+}
+
+#info {
+    margin-top: 110px;
+}
+
+.sidebar h3.active {
+    color: rgba(255, 255, 255, 0.414);
+
+}
+
+h3 {
+    font-size: 18px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+h3:hover {
+    color: gray;
+}
+
+.logout-btn {
+    margin-top: 150px;
+}
+
+.main-content {
+    margin-left: 18rem; /* Przesunięcie głównej zawartości w prawo, aby zrobić miejsce na sidebar */
+    padding: 20px;
+    width: calc(100% - 18rem); /* Zapewnienie, że main-content nie wyjdzie poza container */
+    box-sizing: border-box; /* Dodane - padding nie będzie wpływał na szerokość */
+}
+
+/*.header {
+    text-align: center;
+}
+
+.soundbar {
+    width: 120vh;
+    height: 50vh;
+    margin: 40px auto;
+    background-color: rgba(61, 61, 61, 0.363);
+    border: 1px double whitesmoke; ;
+    border-radius: 8px;
+}
+*/
+
+/*.bars {
+    height: 200px;
+    left: 50%;
+    margin: -30px 0 0 -20px; /* centruje poziomo i pionowo 
+    position: absolute; /* Pozwala na dokładne pozycjonowanie wewnątrz soundbar 
+    top: 50%; 
+    width: 50px;
+}
+
+.bar {
+    background: rgb(22, 236, 22);
+    bottom: 10px; /* Ustawienie dolnej krawędzi paska 
+    height: 30px;
+    position: absolute; /* Pozwala na dokładne pozycjonowanie pasków 
+    width: 50px;
+    animation: sound 0ms -800ms linear infinite alternate; 
+}*/
+
+/*@keyframes sound {
+    0% {
+        opacity: .35;
+        height: 300px;
+    }
+    100% {
+        opacity: 1;
+        height: 28px
+    }
+}
+
+.bar:nth-child(1)  { left: -120px; animation-duration: 497ms; }
+.bar:nth-child(2)  { left: -60px; animation-duration: 487ms; }
+.bar:nth-child(3)  { left: 1px; animation-duration: 474ms; }
+.bar:nth-child(4)  { left: 60px; animation-duration: 465ms; }
+.bar:nth-child(5)  { left: 120px; animation-duration: 450ms; }
+.bar:nth-child(6)  { left: 180px; animation-duration: 442ms; }
+.bar:nth-child(7)  { left: 240px; animation-duration: 430ms; }
+.bar:nth-child(8)  { left: 300px; animation-duration: 420ms; }
+.bar:nth-child(9)  { left: 360px; animation-duration: 441ms; }
+.bar:nth-child(10)  { left: 420px; animation-duration: 419ms; }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.container {
+  width: 175vh;
+  height: 90vh;
+  padding: 20rem;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.414);
+  background: black;
+  display: flex;
+  overflow: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    width: 18rem;
+    height: 100%;
+    background: pink;
+    padding: 1rem;
+}*/
