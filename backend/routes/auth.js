@@ -23,10 +23,15 @@ const generateToken = (id) => {
 
 // Endpoint rejestracji uzytkownika
 router.post('/register', async (req, res) => {
-    const { name, email, password } = req.body;     // pobieramy dane z ciala zapytania
+    const { name, email, password, confirmPassword } = req.body;     // pobieramy dane z ciala zapytania
 
-    if (!name || !email || !password) {     // sprawdzamy czy wszystkie pola sa wypelnione
+    if (!name || !email || !password || !confirmPassword) {     // sprawdzamy czy wszystkie pola sa wypelnione
         return res.status(400).json({ message: 'Please provide all required fields.' });
+    }
+
+    // Sprawdzamy czy hasła się zgadzają
+    if (password !== confirmPassword) {
+        return res.status(400).json({ message: 'Passwords do not match.' });
     }
 
     // Sprawdzamy czy uzytkownik juz istnieje
