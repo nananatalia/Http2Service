@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Dashboard from '../components/Dashboard';
+import { set } from 'react-hook-form';
+
+//axios.defaults.withCredentials = true;  // pozwala na wysylanie ciasteczek z kazdym zapytaniem
 
 const Login = ({ setUser }) => {
     
@@ -13,37 +17,86 @@ const Login = ({ setUser }) => {
         confirmPassword: "",
     })
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const toggleState = (newState) => {     // funkcja do zmiany stanu miedzy "Sign Up" a "Login"
+        setState(newState); // Zmiana stanu miedzy "Sign Up" a "Login"
+        setForm({   // Resetowanie formularza przy zmianie stanu
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+        });
+        setError(""); // Resetowanie bledow przy zmianie stanu
+    };
+
+    const validateFormFrontend = () => {
+        if (state === "Sign Up") {
+            if (!form.name || form.name.trim().length < 3) {
+                setError("Nazwa użytkownika powinna mieć co najmniej 3 znaki.");
+                return false;
+            }
+            if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) {
+                setError("Proszę podać prawidłowy adres e-mail.");
+                return false;
+            }
+            if (form.password !== form.confirmPassword) {
+                setError("Hasła się nie zgadzają.");
+                return false;
+            }
+        } else {
+            if (!form.name || !form.password) {
+                setError("Wypełnij wszystkie pola.");
+                return false;
+            }
+        }
+        return true;
+    }
 
     const handleSubmit = async (e) => {
     e.preventDefault();    // zapobiega przeładowaniu strony przy submitowaniu formularza (refresh)
+    setError("");
+    if (!validateFormFrontend()) {
+        return;
+    }
+    setLoading(true)
+
     try {
         if (state === "Sign Up") {
+            // Rejestracja
             const res = await axios.post("/api/auth/register", form);
             setUser(res.data.user);
-            navigate("/");
+            navigate("/dashboard"); 
         } else {
+            // Logowanie
             const res = await axios.post("/api/auth/login", form);
             setUser(res.data.user);
-            navigate("/");
+            navigate("/dashboard");
         }
     } catch (err) {
         console.error("Błąd", err.response?.data || err.message);
-        if (state === "Sign Up") {
-            setError("Register failed.");
+        // Ustawianie odpowiedniego komunikatu o błędzie
+        const errorMsg = err.response?.data?.message || err.response?.data?.error;  
+        if (errorMsg) {
+            setError(errorMsg);
         } else {
-            setError("Zła nazwa użytkownika lub hasło.");
+            if (state === "Sign Up") {
+                setError(alert("Rejestracja nie powiodła się. Spróbuj ponownie."));
+            } else {
+                setError("Zła nazwa użytkownika lub hasło.");
+            }
         }
+    } finally {
+        setLoading(false);
     }
 }
-    return <div className='container'>
+    return <div className='form'>
                 <div className='form-header'>
                     <p>{state === "Sign Up" ? "Zarejestruj się" : "Zaloguj się"}</p>
                 </div>
                 <form onSubmit={handleSubmit}>
-                <h2 className='header'>Login</h2>
                 {error && <p className='error'>{error}</p>}
-                {state === "Sign Up" && (
                     <div className='form-group'>
                         <label className='label'>Nazwa użytkownika</label>
                         <input 
@@ -54,17 +107,18 @@ const Login = ({ setUser }) => {
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                         />
                     </div>
-                )}
-                    <div className='form-group'>
-                        <label className='label'>Adres e-mail</label>
-                        <input 
-                            type='email'
-                            placeholder='Email'
-                            className='input'
-                            value={form.email}
-                            onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        />
-                    </div>
+                    {state === "Sign Up" && (
+                        <div className='form-group'>
+                            <label className='label'>Adres e-mail</label>
+                            <input 
+                                type='email'
+                                placeholder='Email'
+                                className='input'
+                                value={form.email}
+                                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                            />
+                        </div>
+                    )}
                     <div className='form-group'>
                         <label className='label'>Hasło</label>
                         <input 
@@ -88,10 +142,17 @@ const Login = ({ setUser }) => {
                             />
                         </div>
                     )}
+
+                    {state === "Sign Up" ? (
+                        <button className='btn' type='submit'>Zarejestruj się</button>
+                    ) : (
+                        <button className='btn' type='submit'>Zaloguj się</button>
+                    )}
+                    
                 </form>
 
                 {state === "Sign Up" ? (
-                    <p onClick={''}>Masz już konto?{' '}<span onClick={() => setState('Login')} className='link'>Zaloguj się</span></p>)
+                    <p>Masz już konto?{' '}<span onClick={() => setState('Login')} className='link'>Zaloguj się</span></p>)
                     : (
                         <p>Nie masz konta?{' '}<span onClick={() => setState('Sign Up')} className='link'>Zarejestruj się</span></p>
                 )}

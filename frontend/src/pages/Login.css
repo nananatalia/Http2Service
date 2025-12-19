@@ -1,46 +1,58 @@
-.container {
-    min-height: 80vh;    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .form {
-    background-color: white;
-    padding: 1.5rem 2rem;
-    border-radius: 10px;
-    box-shadow:  0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
+    background: black;
+    padding: 30px; /* Zwiększone padding dla lepszego odstępu */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    width: 100%; /* Pełna szerokość kontenera */
+    max-width: 500px; /* Maksymalna szerokość formularza */
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.414); /* Delikatny cień dla efektu głębi */
+    display: flex; /* Flexbox dla lepszego układu */
+    flex-direction: column; /* Układ w kolumnie */
 }
 
-.header {
-    font-size: 2rem;
-    margin-top: auto;
-    margin-bottom: 20px;
+.form-header {
+    font-size: 3rem; /* Zwiększony rozmiar czcionki */
+    text-align: center; /* Wyśrodkowanie tekstu */
 }
 
-.error {
-    color: red;
-    margin-bottom: 10px;
-    text-align: center;
+.form-group {
+    display: flex; /* Flexbox dla lepszego układu */
+    flex-direction: column; /* Układ w kolumnie */
+}
+
+.label {
+    padding: 10px 0 5px 0; /* Odstęp nad i pod etykietą */
+    font-size: 17px;    /* Zwiększony rozmiar czcionki */
+    font-weight: 300; /* Lżejsza czcionka */
+    margin-top: 8px; /* Odstęp nad etykietą */
+    margin-bottom: 4px; /* Odstęp pod etykietą */
 }
 
 .input {
-    display: block;
-    border: 5px solid #331e91;
-    padding: 0.5rem;
-    width: 100%;
-    margin-bottom: 0.75rem;
-    box-sizing: border-box;
+    padding: 10px; /* Zwiększone padding dla lepszego komfortu */
+    margin-top: 2px; /* Odstęp nad polem input */
+    border: 4px solid #e1e5e9;  /* Grubsza ramka */
+    border-radius: 5px; /* Zaokrąglone rogi */
+    font-size: 1rem; /* Zwiększony rozmiar czcionki */
+    transition: border-color 0.3s ease; /* Płynna zmiana koloru ramki */
+}
+
+.input:focus { /* Stylizacja przy fokusie */
+    outline: none;  /* Usunięcie domyślnego obramowania */
+    border-color: #d118d1;  /* Zmiana koloru ramki przy fokusie */
 }
 
 .btn {
-    background-color: rgb(0, 141, 235);
-    color: white;
-    border: 5px solid #331e91;
-    padding: 10px;
-    width: 100%;
-    font-size: 1rem;
-    cursor: pointer;
+    width: 100%; /* Pełna szerokość przycisku */
+    padding: 15px; /* Zwiększone padding dla lepszego komfortu */  
+}
+
+p {
+    margin-top: 18px;   /* Odstęp nad paragrafem */
+    text-align: center; 
+}
+
+.link {
+    color: dodgerblue;
+    font-weight: bold; /* Pogrubiona czcionka dla lepszej widoczności */
+    cursor: pointer; /* Zmiana kursora na wskaźnik przy najechaniu */
 }
