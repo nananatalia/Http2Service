@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import axios from 'axios'
 import NotFound from './components/NotFound.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 
 axios.defaults.withCredentials = true;  // pozwala na wysylanie ciasteczek z kazdym zapytaniem
 
@@ -34,17 +35,18 @@ function App() {
 
   // gniazdkowanie routow
   return (
-    <Router>
+    //<Router>
       <div className='app'> 
         <main className='main-content'>
           <Routes>
             <Route path='/' element={<Home user={user} error={error} />} />
-            <Route path='/login' element={user ? <Navigate to="/" /> : <Login setUser={setUser} />} />
+            <Route path='/login' element={user ? <Navigate to="/dashboard" /> : <Login setUser={setUser} />} />
+            <Route path='/dashboard' element={user ? <Dashboard user={user} /> : <Navigate to={'/login'} />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
       </div>
-    </Router>
+    //</Router>
   )
 }
 
